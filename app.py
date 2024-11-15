@@ -62,7 +62,7 @@ def predict_nutrients(crop_name):
     return nutrient_predictions[0]
 
 # Streamlit App Layout
-st.title("Crop Prediction and Nutrient Recommendation")
+st.title("Crop Prediction and  t Nutrient Recommendation")
 
 # Sidebar for navigation
 option = st.sidebar.selectbox("Select an Option", ["Predict Crop", "Recommend Nutrients"])
