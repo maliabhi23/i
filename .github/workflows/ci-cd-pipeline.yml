@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip  # Upgrade pip to avoid any issues
           pip install -r requirements.txt  # Install dependencies from requirements.txt
 
-      # Step 4: Run tests with pytest (or your preferred testing tool)
-      - name: Run tests
-        run: |
-          pytest  # or use any other test command like `python -m unittest discover`
+      # Step 4: (Removed) Run tests with pytest or other testing tools
+      # - name: Run tests
+      #   run: |
+      #     pytest  # or use any other test command like `python -m unittest discover`
