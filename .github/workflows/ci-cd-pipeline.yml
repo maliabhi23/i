@@ -30,16 +30,15 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t my-python-app .  # Replace 'my-python-app' with your image name
-
       # Step 5: Install Railway CLI
       - name: Install Railway CLI
         run: |
           curl -sSL https://railway.app/install.sh | sh  # Install Railway CLI
 
-      # Step 6: Login to Railway (using the secret stored in GitHub Actions)
+      # Step 6: Login to Railway using the API Key (Non-interactive)
       - name: Login to Railway
         run: |
-          echo ${{ secrets.RAILWAY_API_KEY }} | railway login
+          railway login --apiKey ${{ secrets.RAILWAY_API_KEY }}
 
       # Step 7: Deploy to Railway (Deploy Docker image to Railway)
       - name: Deploy to Railway
