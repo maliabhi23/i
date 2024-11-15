@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
-    
+
     steps:
       # Step 1: Checkout the repository code
       - name: Checkout code
@@ -26,7 +26,22 @@ jobs:
           python -m pip install --upgrade pip  # Upgrade pip to avoid any issues
           pip install -r requirements.txt  # Install dependencies from requirements.txt
 
-      # Step 4: (Removed) Run tests with pytest or other testing tools
-      # - name: Run tests
-      #   run: |
-      #     pytest  # or use any other test command like `python -m unittest discover`
+      # Step 4: Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t my-python-app .  # Replace 'my-python-app' with your image name
+
+      # Step 5: Install Railway CLI
+      - name: Install Railway CLI
+        run: |
+          curl -sSL https://railway.app/install.sh | sh  # Install Railway CLI
+
+      # Step 6: Login to Railway (using the secret stored in GitHub Actions)
+      - name: Login to Railway
+        run: |
+          echo ${{ secrets.RAILWAY_API_KEY }} | railway login
+
+      # Step 7: Deploy to Railway (Deploy Docker image to Railway)
+      - name: Deploy to Railway
+        run: |
+          railway up --docker  # Automatically deploy the Docker image to Railway
