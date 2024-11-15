@@ -36,8 +36,14 @@ jobs:
         run: |
           curl -sSL https://railway.app/install.sh | sh  # Install Railway CLI
 
-      # Step 6: Set Railway API Key and deploy Docker image
-      - name: Set Railway API Key and deploy
+      # Step 6: Login to Railway using the API key (Non-interactive)
+      - name: Login to Railway with API Key
         run: |
-          export RAILWAY_API_KEY="737dee2d-09da-45e4-a88d-ddd084ca491b"  # Use your Railway API key here
+          echo "RAILWAY_API_KEY=737dee2d-09da-45e4-a88d-ddd084ca491b" >> ~/.bashrc  # Store API key in bashrc
+          source ~/.bashrc  # Load the API key
+          railway login --apiKey $RAILWAY_API_KEY  # Login using the stored API key
+
+      # Step 7: Deploy to Railway
+      - name: Deploy to Railway
+        run: |
           railway up -- --docker  # Deploy the Docker image to Railway
