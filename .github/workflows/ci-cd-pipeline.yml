@@ -36,10 +36,10 @@ jobs:
         run: |
           curl -sSL https://railway.app/install.sh | sh  # Install Railway CLI
 
-      # Step 6: Login to Railway using the secret stored in GitHub Actions
+      # Step 6: Login to Railway with manually added API key
       - name: Login to Railway
         run: |
-          echo ${{ secrets.RAILWAY_API_KEY }} | railway login
+          echo "737dee2d-09da-45e4-a88d-ddd084ca491b" | railway login  # Replace with your actual API key
 
       # Step 7: Deploy to Railway (Deploy Docker image to Railway)
       - name: Deploy to Railway
