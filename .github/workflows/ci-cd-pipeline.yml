@@ -40,4 +40,4 @@ jobs:
       - name: Deploy to Railway
         run: |
           export RAILWAY_API_KEY=737dee2d-09da-45e4-a88d-ddd084ca491b  # Set API key as an environment variable
-          railway up --docker  # Deploy the Docker image to Railway
+          railway up -- --docker  # Deploy the Docker image to Railway
